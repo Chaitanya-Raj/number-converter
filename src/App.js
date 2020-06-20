@@ -75,8 +75,10 @@ function App() {
           id="dec"
           value={dec}
           onChange={(e) => {
-            setDec(e.target.value);
-            convert(e.target.value, 10);
+            if (e.target.value.match("^[0-9]*$") != null) {
+              setDec(e.target.value);
+              convert(e.target.value, 10);
+            }
           }}
         />
       </div>
@@ -88,8 +90,10 @@ function App() {
           id="bin"
           value={bin}
           onChange={(e) => {
-            setBin(e.target.value);
-            convert(e.target.value, 2);
+            if (e.target.value.match("^[0-1]*$") != null) {
+              setBin(e.target.value);
+              convert(e.target.value, 2);
+            }
           }}
         />
       </div>
@@ -101,8 +105,10 @@ function App() {
           id="oct"
           value={oct}
           onChange={(e) => {
-            setOct(e.target.value);
-            convert(e.target.value, 8);
+            if (e.target.value.match("^[0-7]*$") != null) {
+              setOct(e.target.value);
+              convert(e.target.value, 8);
+            }
           }}
         />
       </div>
@@ -114,8 +120,10 @@ function App() {
           id="hex"
           value={hex}
           onChange={(e) => {
-            setHex(e.target.value);
-            convert(e.target.value, 16);
+            if (e.target.value.match("^[a-fA-F0-9]*$") != null) {
+              setHex(e.target.value);
+              convert(e.target.value, 16);
+            }
           }}
         />
       </div>
