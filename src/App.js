@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
   const [bin, setBin] = useState("");
   const [dec, setDec] = useState("");
 
-  const convert = () => {
-    setDec(parseInt(bin, 2));
-  };
+  useEffect(() => {
+    setDec(String(parseInt(bin, 2)));
+  }, [bin]);
+
+  useEffect(() => {
+    setBin((dec >>> 0).toString(2));
+  }, [dec]);
 
   return (
     <div className="container">
@@ -17,14 +21,12 @@ function App() {
           type="text"
           name="bin"
           id="bin"
-          maxLength="8"
           value={bin}
           onChange={(e) => {
             setBin(e.target.value);
           }}
         />
       </div>
-      <button onClick={convert}>Convert</button>
       <div className="decimal">
         <label htmlFor="dec">Decimal</label>
         <input

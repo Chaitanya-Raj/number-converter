@@ -2,18 +2,21 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: #000;
 }
 
 .binary,
 .decimal {
   display: flex;
+  align-items: center;
 }
 
 label {
   margin-right: 10px;
+  color: #ddd;
 }
 
 input {
