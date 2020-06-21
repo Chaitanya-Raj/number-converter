@@ -8,7 +8,11 @@ function App() {
   const [hex, setHex] = useState("");
 
   const convert = (value, n) => {
-    if (!isNaN(parseInt(value)) || value.match("^[A-Fa-f]*$") != null) {
+    if (
+      (!isNaN(parseInt(value)) || value.match("^[A-Fa-f]*$")) &&
+      value !== ""
+    ) {
+      console.log(value);
       if (n !== 2) {
         setBin(parseInt(value, n).toString(2));
       }
@@ -22,6 +26,7 @@ function App() {
         setHex(parseInt(value, n).toString(16));
       }
     } else {
+      console.log("no");
       if (n !== 2) {
         setBin("");
       }
@@ -37,34 +42,6 @@ function App() {
     }
   };
 
-  // useEffect(() => {
-  //   setBin((dec >>> 0).toString(2));
-  //   setOct((dec >>> 0).toString(8));
-  //   setHex((dec >>> 0).toString(16));
-  // }, [dec]);
-
-  // useEffect(() => {
-  //   let tempDec = String(parseInt(bin, 2));
-  //   setDec(tempDec);
-  //   setOct(tempDec.toString(8));
-  //   setHex(tempDec.toString(16));
-  //   console.log("bin");
-  // }, [bin]);
-
-  // useEffect(() => {
-  //   let tempDec = String(parseInt(oct, 8));
-  //   setDec(tempDec);
-  //   setBin(tempDec.toString(2));
-  //   setHex(tempDec.toString(16));
-  // }, [oct]);
-
-  // useEffect(() => {
-  //   let tempDec = String(parseInt(hex, 16));
-  //   setDec(tempDec);
-  //   setOct(tempDec.toString(8));
-  //   setBin(tempDec.toString(2));
-  // }, [hex]);
-
   return (
     <div className="container">
       <div className="decimal">
@@ -75,7 +52,7 @@ function App() {
           id="dec"
           value={dec}
           onChange={(e) => {
-            if (e.target.value.match("^[0-9]*$") != null) {
+            if (e.target.value.match("^[0-9]*$")) {
               setDec(e.target.value);
               convert(e.target.value, 10);
             }
@@ -90,7 +67,7 @@ function App() {
           id="bin"
           value={bin}
           onChange={(e) => {
-            if (e.target.value.match("^[0-1]*$") != null) {
+            if (e.target.value.match("^[0-1]*$")) {
               setBin(e.target.value);
               convert(e.target.value, 2);
             }
@@ -105,7 +82,7 @@ function App() {
           id="oct"
           value={oct}
           onChange={(e) => {
-            if (e.target.value.match("^[0-7]*$") != null) {
+            if (e.target.value.match("^[0-7]*$")) {
               setOct(e.target.value);
               convert(e.target.value, 8);
             }
@@ -120,7 +97,7 @@ function App() {
           id="hex"
           value={hex}
           onChange={(e) => {
-            if (e.target.value.match("^[a-fA-F0-9]*$") != null) {
+            if (e.target.value.match("^[a-fA-F0-9]*$")) {
               setHex(e.target.value);
               convert(e.target.value, 16);
             }
