@@ -8,7 +8,7 @@ function App() {
   const [hex, setHex] = useState("");
 
   const convert = (value, n) => {
-    if (!isNaN(parseInt(value))) {
+    if (!isNaN(parseInt(value)) || value.match("^[A-Fa-f]*$") != null) {
       if (n !== 2) {
         setBin(parseInt(value, n).toString(2));
       }
